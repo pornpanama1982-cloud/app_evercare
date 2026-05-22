@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>สร้างบัญชี - EverCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blockchain-dashboard-banner">
+        <div class="blockchain-badge"><i class="fa-solid fa-link"></i> เครือข่ายบัญชีแยกประเภท Blockchain ยืนยันพยาบาลอัตโนมัติ</div>
+    </div>
+    <div class="phone-mockup">
+        <div class="phone-notch"></div>
+        <div class="app-screen">
+            <div class="header-bg" style="height: 200px;">
+                <div class="logo-container" style="width: 70px; height: 70px; margin-top: 25px;"><img src="https://cdn.discordapp.com/attachments/1398335090458628267/1506869916945481850/image.png" alt="Logo"></div>
+                <h1 class="app-title" style="font-size: 22px;">สร้างบัญชีใหม่</h1>
+            </div>
+            <div class="login-content" style="padding-top: 25px;">
+                <form onsubmit="window.handleRegister(event)">
+                    <div class="input-group"><i class="fa-regular fa-user"></i><input id="regUser" type="text" class="input-control" placeholder="ชื่อผู้ใช้ใหม่" required></div>
+                    <div class="input-group"><i class="fa-solid fa-lock"></i><input id="regPass" type="password" class="input-control" placeholder="รหัสผ่าน" required></div>
+                    <div class="input-group"><i class="fa-solid fa-wallet"></i><input id="regWallet" type="text" class="input-control" placeholder="หมายเลขกระเป๋าจำลอง" readonly></div>
+                    <button type="submit" class="btn-login">สร้างบัญชีผู้ใช้งาน</button>
+                </form>
+                <div class="footer-links"><a href="index.html" class="link-item">มีบัญชีอยู่แล้ว? เข้าสู่ระบบ</a></div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="script.js"></script>
+    <script>window.onload = function() { document.getElementById('regWallet').value = "0x" + Math.random().toString(16).substr(2, 40).padEnd(40, '0'); };</script>
+</body>
+</html>

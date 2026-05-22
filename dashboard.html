@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard - EverCare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blockchain-dashboard-banner">
+        <div class="blockchain-badge"><i class="fa-solid fa-link"></i> เครือข่ายบัญชีแยกประเภท Blockchain ยืนยันพยาบาลอัตโนมัติ</div>
+    </div>
+    <div class="phone-mockup">
+        <div class="phone-notch"></div>
+        <div id="toastNotification" class="notification-toast"><i id="toastIcon" class="fa-solid fa-bell"></i><span id="toastMessage">แจ้งเตือนระบบ</span><button class="toast-action-btn" onclick="window.closeToast()">ปิด</button></div>
+
+        <div class="app-screen">
+            <div class="dash-header">
+                <div class="user-profile">
+                    <div id="userAvatar" class="profile-avatar"><i class="fa-solid fa-user-nurse"></i></div>
+                    <div class="profile-info"><p class="welcome-label">สวัสดีผู้ดูแล</p><h3 id="currentCaregiver" class="elderly-name">กำลังโหลด...</h3></div>
+                </div>
+                <div class="header-action-group">
+                    <button class="btn-logout" onclick="window.handleLogout()" title="ออกจากระบบ"><i class="fa-solid fa-right-from-bracket"></i></button>
+                    <div class="noti-btn" onclick="window.openBlockchainExplorer()"><i class="fa-solid fa-cubes"></i><span id="notiBadge" class="noti-badge"></span></div>
+                </div>
+            </div>
+
+            <div class="dash-body">
+                <div class="status-banner" id="dashboardBanner">
+                    <div class="status-icon" id="bannerIcon"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <div class="status-text"><h4 id="statusText">สถานะวันนี้: ปกติ</h4><p id="statusUpdate">อัปเดตล่าสุดเมื่อสักครู่</p></div>
+                </div>
+                <h3 class="section-title">เมนูการใช้งาน</h3>
+                <div class="menu-grid">
+                    <div class="menu-card" onclick="window.openModal('modalTracking')"><div class="card-icon icon-blue"><i class="fa-solid fa-location-dot"></i></div><h4>ติดตามตำแหน่ง</h4><p>พิกัดปัจจุบัน</p></div>
+                    <div class="menu-card" onclick="window.openModal('modalMedicine')"><div class="card-icon icon-orange"><i class="fa-solid fa-pills"></i></div><h4>ตารางยา</h4><p>แจ้งเตือนทานยา</p></div>
+                    <div class="menu-card" onclick="window.openModal('modalHealth')"><div class="card-icon icon-teal"><i class="fa-solid fa-file-medical"></i></div><h4>บันทึกสุขภาพ</h4><p>ชีพจร / ออกซิเจน</p></div>
+                    <div class="menu-card" onclick="window.openModal('modalReport')"><div class="card-icon icon-purple"><i class="fa-solid fa-chart-line"></i></div><h4>รายงานประจำวัน</h4><p>สรุปพฤติกรรม</p></div>
+                </div>
+                <div class="sos-section"><button class="btn-sos" onclick="window.triggerManualSOS()"><i class="fa-solid fa-phone-flip"></i> ติดต่อฉุกเฉิน (SOS)</button></div>
+            </div>
+
+            <div class="bottom-nav">
+                <a href="#" class="nav-item active"><i class="fa-solid fa-house"></i><span>หน้าหลัก</span></a>
+                <a onclick="window.openModal('modalTracking')" class="nav-item"><i class="fa-solid fa-route"></i><span>พิกัด</span></a>
+                <a onclick="window.openModal('modalMedicine')" class="nav-item"><i class="fa-solid fa-calendar-days"></i><span>นัดหมาย</span></a>
+                <a onclick="window.openModal('modalSettings')" class="nav-item"><i class="fa-solid fa-gear"></i><span>ตั้งค่า</span></a>
+            </div>
+        </div>
+
+        <!-- Modals -->
+        <div id="modalBlockchain" class="modal-overlay"><div class="modal-box"><div class="modal-header"><div class="modal-title"><i class="fa-solid fa-cubes-stacked" style="color: #14b8a6;"></i> <span>Blockchain Ledger</span></div><button class="close-modal-btn" onclick="window.closeAllModals()"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body" id="blockchainLedgerContent"></div></div></div>
+        
+        <div id="modalTracking" class="modal-overlay"><div class="modal-box"><div class="modal-header"><div class="modal-title"><i class="fa-solid fa-location-dot" style="color: #3182ce;"></i> <span>พิกัดล่าสุดของผู้สูงอายุ</span></div><button class="close-modal-btn" onclick="window.closeAllModals()"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="health-item" style="background-color: #ebf8ff; flex-direction: column; align-items: flex-start;"><p style="font-weight: 600; color: #2b6cb0;">📌 ตำแหน่ง:</p><p id="coordinatesText">คลิกเพื่อคำนวณตำแหน่ง...</p></div><button class="btn-login" onclick="window.syncGPSLocation()" style="margin-top:15px; background: #3182ce;"><i class="fa-solid fa-rotate"></i> อัปเดตพิกัดส่งขึ้นบล็อกเชน</button></div></div></div>
+        
+        <div id="modalMedicine" class="modal-overlay"><div class="modal-box"><div class="modal-header"><div class="modal-title"><i class="fa-solid fa-pills" style="color: #dd6b20;"></i> <span>ประวัติการแจ้งเตือนและการหยิบยา</span></div><button class="close-modal-btn" onclick="window.closeAllModals()"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="health-item" style="background: #fffaf0;"><div><p style="font-weight:600; color:#c05621;">💊 มื้อเย็น (18:00 น.)</p><p style="font-size:11px; color:#718096;">ยาลดไขมัน และ ยาแก้น้ำตาล</p></div><span id="pillsStatusEvening" class="blockchain-badge" style="background:#a0aec0;">รอตรวจสอบ</span></div><button class="btn-login" onclick="window.simulateMedicationGrab()" style="background: #dd6b20;"><i class="fa-solid fa-hand-holding-medical"></i> จำลองผู้ป่วยหยิบยาจากกล่อง</button></div></div></div>
+        
+        <div id="modalHealth" class="modal-overlay"><div class="modal-box"><div class="modal-header"><div class="modal-title"><i class="fa-solid fa-file-medical" style="color: #319795;"></i> <span>บันทึกสัญญาณชีพ (MAX30102)</span></div><button class="close-modal-btn" onclick="window.closeAllModals()"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div class="health-item"><span class="health-lbl"><i class="fa-solid fa-heart-pulse" style="color:#ef4444;"></i> อัตราเต้นหัวใจ</span><span id="healthBPM" class="health-val">74 bpm</span></div><div class="health-item"><span class="health-lbl"><i class="fa-solid fa-droplet" style="color:#3182ce;"></i> ระดับออกซิเจน</span><span id="healthSpO2" class="health-val">98%</span></div><button class="btn-login" onclick="window.simulateHealthEmergency()" style="margin-top:15px; background: #319795;"><i class="fa-solid fa-arrows-spin"></i> จำลองชีพจรผิดปกติ (วิกฤต)</button></div></div></div>
+        
+        <div id="modalReport" class="modal-overlay"><div class="modal-box"><div class="modal-header"><div class="modal-title"><i class="fa-solid fa-chart-line" style="color: #805ad5;"></i> <span>รายงานสรุปประจำวัน</span></div><button class="close-modal-btn" onclick="window.closeAllModals()"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><div style="background-color: #faf5ff; padding: 15px; border-radius: 12px; border:1px solid #e9d8fd;"><h4 style="color:#6b46c1; margin-bottom: 6px;">📋 ข้อมูลพฤติกรรม</h4><p style="font-size: 12px;">• นอนหลับสนิท: <b>8 ชม.</b></p><p style="font-size: 12px;">• บล็อกเชน: <b>เสถียรปลอดภัย 100%</b></p></div></div></div></div>
+        
+        <div id="modalSettings" class="modal-overlay"><div class="modal-box"><div class="modal-header"><div class="modal-title"><i class="fa-solid fa-gear" style="color: #4a5568;"></i> <span>การตั้งค่าระบบ</span></div><button class="close-modal-btn" onclick="window.closeAllModals()"><i class="fa-solid fa-xmark"></i></button></div><div class="modal-body"><label style="font-size: 13px; margin-bottom: 6px;">หมายเลข SOS ด่วน:</label><input id="sosNumberInput" type="text" class="input-control" value="089-123-4567" style="margin-bottom:10px;"><button class="btn-login" onclick="window.saveConfigSettings()" style="background:#4a5568;">บันทึกข้อมูลสัญญาจำลอง</button></div></div></div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => { window.loadUserProfile(); });
+    </script>
+</body>
+</html>

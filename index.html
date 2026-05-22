@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EverCare - เข้าสู่ระบบ</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="phone-mockup">
+    <div class="phone-notch"></div>
+
+    <!-- HEADER -->
+    <div class="header-bg">
+
+        <div class="logo-container">
+            <img src="https://cdn.discordapp.com/attachments/1398335090458628267/1506869916945481850/image.png?ex=6a107e38&is=6a0f2cb8&hm=66e8563b636874eee969f29231e7408648abe1895d78cdeea59567482ecb7b5e&" alt="EverCare Logo">
+        </div>
+
+        <h1 class="app-title">EverCare</h1>
+        <p class="app-subtitle">ระบบดูแลผู้สูงอายุอัจฉริยะ</p>
+
+    </div>
+
+    <!-- CONTENT -->
+    <div class="login-content">
+
+        <h2 class="welcome-text">ยินดีต้อนรับ</h2>
+        <p class="welcome-sub">เข้าสู่ระบบเพื่อใช้งาน</p>
+
+        <!-- ❗ IMPORTANT: form ต้องมี id ตรงกับ login.js -->
+        <form id="loginForm">
+
+            <div class="input-group">
+                <i class="fa-regular fa-user"></i>
+
+                <!-- ❗ ID ต้องตรง -->
+                <input type="text" id="username" class="input-control" placeholder="ชื่อผู้ใช้" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-lock"></i>
+
+                <!-- ❗ ID ต้องตรง -->
+                <input type="password" id="password" class="input-control" placeholder="รหัสผ่าน" required>
+            </div>
+
+            <button type="submit" class="btn-login">
+                เข้าสู่ระบบ <i class="fa-solid fa-arrow-right"></i>
+            </button>
+
+        </form>
+
+        <!-- GOOGLE (ไม่กระทบ JS เพราะไม่มี submit) -->
+        <button type="button" class="btn-google">
+            <img src="https://cdn.discordapp.com/attachments/1398335090458628267/1506871219750830290/i-fixed-the-google-logo-v0-c15dy6a4mvff1.png?ex=6a107f6f&is=6a0f2def&hm=6f45ced8ed176041003bd9b67e9577281f999bffaf44df17e296e8e50de90a14&" alt="Google">
+            เข้าสู่ระบบด้วย Google
+        </button>
+
+        <!-- FOOTER -->
+        <div class="footer-links">
+
+            <!-- ❗ link ไป register -->
+            <a href="register.html" class="link-item">ลงทะเบียนบัญชีใหม่</a>
+
+            <a href="#" class="link-item">ลืมรหัสผ่าน?</a>
+
+            <p class="copyright-text">EverCare Smart System © 2026</p>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<script type="module" src="script.js"></script>
+<script src="login.js" defer></script>
+
+</body>
+</html>
